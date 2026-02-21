@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://asjadzaki.com/sitemap.xml
