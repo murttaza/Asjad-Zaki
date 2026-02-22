@@ -1,8 +1,8 @@
 :root {
-    --primary-color: #5B7C99;
-    /* Dull Blue */
-    --primary-dark: #3E5A74;
-    --primary-light: #8BA6BF;
+    --primary-color: #5DADE2;
+    /* Lighter Blue */
+    --primary-dark: #2E86C1;
+    --primary-light: #AED6F1;
     --secondary-color: #F0F4F8;
     /* Very light dull blue bg */
     --accent-color: #E63946;

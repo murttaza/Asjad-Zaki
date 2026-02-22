@@ -24,17 +24,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+    // Mobile Menu elements
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-menu a');
+
     // Header scroll effect
     const header = document.getElementById('header');
 
-    // Click header to scroll to top (ignoring links)
+    // Click header or logo to scroll to top and reset URL state
     header.addEventListener('click', (e) => {
-        if (!e.target.closest('a') && !e.target.closest('button')) {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+        const link = e.target.closest('a');
+
+        // Ignore hamburger clicks
+        if (e.target.closest('.hamburger')) return;
+
+        // Ignore clicks on actual navigation menu links
+        if (link && !link.classList.contains('logo')) return;
+
+        // Handle logo click or empty header click
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
+        // Close mobile menu if it is open
+        if (hamburger && mobileMenu && mobileMenu.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
         }
+
+        // Remove hash from URL to return to 'base state'
+        history.pushState('', document.title, window.location.pathname + window.location.search);
     });
 
     window.addEventListener('scroll', () => {
@@ -50,9 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Mobile Menu Toggle
-    const hamburger = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const mobileLinks = document.querySelectorAll('.mobile-menu a');
 
     if (hamburger && mobileMenu) {
         hamburger.addEventListener('click', () => {
