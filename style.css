@@ -425,6 +425,30 @@ header {
     margin-bottom: 3rem;
 }
 
+.business-card-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    perspective: 1000px;
+}
+
+.business-card {
+    max-width: 100%;
+    width: 480px;
+    aspect-ratio: 1.75;
+    /* Standard business card proportion */
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.business-card:hover {
+    transform: translateY(-8px) rotateX(4deg) rotateY(-4deg);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.08);
+}
+
 .contact-actions {
     display: flex;
     justify-content: center;
@@ -657,6 +681,21 @@ footer {
         /* Full width cards on mobile? Or maybe 2 columns */
         /* Let's keep them square-ish but flex-grow if needed, or just let them wrap naturally */
         flex: 1 1 140px;
+    }
+
+    .business-card-wrapper {
+        margin-bottom: 2rem;
+        perspective: none;
+    }
+
+    .business-card {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .business-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.15);
     }
 }
 
